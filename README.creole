@@ -1,0 +1,7 @@
+== CoreLevels
+
+CoreLevels manages levels, provides commands to access them, and an API for plugin access.
+
+=== Compiling
+
+Maven 3 is required to compile CoreLevels
