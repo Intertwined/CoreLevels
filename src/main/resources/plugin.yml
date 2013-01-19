@@ -3,3 +3,4 @@ main: com.nuclearw.intertwined.corelevels.CoreLevels
 version: ${project.version}
 author: NuclearW
 description: CoreLevels manages levels, provides commands to access them, and an API for plugin access.
+database: true
