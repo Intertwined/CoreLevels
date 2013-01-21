@@ -99,7 +99,7 @@
         <dependency>
             <groupId>com.lennardf1989</groupId>
             <artifactId>bukkitex</artifactId>
-            <version>LATEST</version>
+            <version>0.0.1-SNAPSHOT</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
