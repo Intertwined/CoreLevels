@@ -3,13 +3,13 @@ package com.nuclearw.intertwined.corelevels;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.PersistenceException;
-
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.avaje.ebean.EbeanServer;
 import com.lennardf1989.bukkitex.MyDatabase;
 import com.nuclearw.intertwined.corelevels.api.CoreLevelsManager;
+import com.nuclearw.intertwined.corelevels.datatype.Level;
+import com.nuclearw.intertwined.corelevels.datatype.User;
 
 public class CoreLevels extends JavaPlugin {
 	private static CoreLevelsManager manager;
@@ -51,6 +51,6 @@ public class CoreLevels extends JavaPlugin {
 			};
 		};
 
-		database.initializeDatabase(driver, url, username, password, isolation, logging, rebuild)
+		database.initializeDatabase(Config.dbDriver, Config.dbURL, Config.dbUsername, Config.dbPassword, Config.dbIsolation, Config.dbLogging, Config.dbRebuild);
 	}
 }
