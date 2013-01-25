@@ -4,6 +4,8 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 import com.nuclearw.intertwined.corelevels.api.CoreLevelsManager;
+import com.nuclearw.intertwined.corelevels.datatype.Level;
+import com.nuclearw.intertwined.corelevels.datatype.User;
 
 public class SimpleCoreLevelsManager implements CoreLevelsManager {
 	private CoreLevels plugin;
@@ -24,8 +26,17 @@ public class SimpleCoreLevelsManager implements CoreLevelsManager {
 
 	@Override
 	public int getLevel(String name, String levelName) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(!isInDatabase(name)) {
+			return -1;
+		} else {
+			User user = plugin.getDatabase().find(User.class).where().ieq("name", name).findUnique();
+			Level targetLevel = getTargetLevel(user, levelName);
+
+			if(targetLevel == null) {
+				return -1;
+			}
+			return getLevelFromXp(targetLevel.getXp(), levelName);
+		}
 	}
 
 	@Override
@@ -40,8 +51,17 @@ public class SimpleCoreLevelsManager implements CoreLevelsManager {
 
 	@Override
 	public int getXp(String name, String levelName) {
-		// TODO Auto-generated method stub
-		return 0;
+		if(!isInDatabase(name)) {
+			return -1;
+		} else {
+			User user = plugin.getDatabase().find(User.class).where().ieq("name", name).findUnique();
+			Level targetLevel = getTargetLevel(user, levelName);
+
+			if(targetLevel == null) {
+				return -1;
+			}
+			return targetLevel.getXp();
+		}
 	}
 
 	@Override
@@ -121,5 +141,24 @@ public class SimpleCoreLevelsManager implements CoreLevelsManager {
 	public boolean removeFromDatabase(String name) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	private Level getTargetLevel(User user, String levelName) {
+		if(user == null) {
+			return null;
+		}
+
+		for(Level level : user.getLevels()) {
+			if(level.getLevelName().equalsIgnoreCase(levelName)) {
+				return level;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public int getLevelFromXp(int xp, String levelName) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

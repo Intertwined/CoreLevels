@@ -21,8 +21,8 @@ public class Level {
 	private String levelName;
 
 	@NotNull
-	@Column(name="level")
-	private int level;
+	@Column(name="xp")
+	private int xp;
 
 	@ManyToOne
 	@Column(name="user")
@@ -44,12 +44,12 @@ public class Level {
 		this.levelName = levelName;
 	}
 
-	public int getLevel() {
-		return level;
+	public int getXp() {
+		return xp;
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
+	public void setXp(int xp) {
+		this.xp = xp;
 	}
 
 	public User getUser() {

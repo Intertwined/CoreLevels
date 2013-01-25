@@ -45,4 +45,6 @@ public interface CoreLevelsManager {
 	public boolean removeFromDatabase(Player player);
 
 	public boolean removeFromDatabase(String name);
+
+	public int getLevelFromXp(int xp, String levelName);
 }
